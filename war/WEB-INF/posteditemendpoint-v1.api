@@ -1,0 +1,246 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://giveawayprealpha.appspot.com/_ah/api",
+  "name" : "posteditemendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://giveawayprealpha.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "example.com",
+  "ownerName" : "example.com",
+  "packagePath" : "giveaway",
+  "methods" : {
+    "posteditemendpoint.removePostedItem" : {
+      "path" : "posteditem/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.giveaway.PostedItemEndpoint.removePostedItem",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "posteditemendpoint.getPostedItem" : {
+      "path" : "posteditem/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.giveaway.PostedItemEndpoint.getPostedItem",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "posteditemendpoint.updatePostedItem" : {
+      "path" : "posteditem",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.giveaway.PostedItemEndpoint.updatePostedItem",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "posteditemendpoint.insertPostedItem" : {
+      "path" : "posteditem",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.giveaway.PostedItemEndpoint.insertPostedItem",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "posteditemendpoint.listPostedItem" : {
+      "path" : "posteditem",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.example.giveaway.PostedItemEndpoint.listPostedItem",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "PostedItem" : {
+        "id" : "PostedItem",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "postingDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "location" : {
+            "$ref" : "GeoPt"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "imageUrl" : {
+            "type" : "string"
+          },
+          "phone" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "GeoPt" : {
+        "id" : "GeoPt",
+        "type" : "object",
+        "properties" : {
+          "latitude" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "longitude" : {
+            "type" : "number",
+            "format" : "float"
+          }
+        }
+      },
+      "CollectionResponse_PostedItem" : {
+        "id" : "CollectionResponse_PostedItem",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "PostedItem"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.example.giveaway.PostedItemEndpoint.removePostedItem" : {
+      },
+      "com.example.giveaway.PostedItemEndpoint.getPostedItem" : {
+        "response" : {
+          "$ref" : "PostedItem"
+        }
+      },
+      "com.example.giveaway.PostedItemEndpoint.updatePostedItem" : {
+        "request" : {
+          "$ref" : "PostedItem"
+        },
+        "response" : {
+          "$ref" : "PostedItem"
+        }
+      },
+      "com.example.giveaway.PostedItemEndpoint.insertPostedItem" : {
+        "request" : {
+          "$ref" : "PostedItem"
+        },
+        "response" : {
+          "$ref" : "PostedItem"
+        }
+      },
+      "com.example.giveaway.PostedItemEndpoint.listPostedItem" : {
+        "response" : {
+          "$ref" : "CollectionResponse_PostedItem"
+        }
+      }
+    }
+  }
+}
