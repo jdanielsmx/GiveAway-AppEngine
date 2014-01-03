@@ -143,10 +143,10 @@
           "location" : {
             "$ref" : "GeoPt"
           },
-          "email" : {
+          "imageUrl" : {
             "type" : "string"
           },
-          "imageUrl" : {
+          "email" : {
             "type" : "string"
           },
           "phone" : {
@@ -174,11 +174,11 @@
           "parent" : {
             "$ref" : "Key"
           },
-          "namespace" : {
-            "type" : "string"
-          },
           "complete" : {
             "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
           }
         }
       },
